@@ -1,0 +1,12 @@
+#####################################################
+# .mybashrc
+# Used for environment variable configuration.
+# Kang Liang 2020/11/26
+#####################################################
+
+# trelis
+alias settrelis='nohup /opt/Trelis-16.5/bin/rlm &'
+
+# set vim as default editor
+export VISUAL=vim;
+export EDITOR=vim; 
