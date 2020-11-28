@@ -9,3 +9,14 @@
 !/fontconfig/
 !my_packages.txt
 !mybashrc
+
+# ranger
+!/ranger/
+ranger/plugins/__pycache__/*
+ranger/colorschemes/__pycache__/*
+ranger/folders.conf
+ranger/colorschemes/__init__.pyo
+ranger/colorschemes/default.pyo
+ranger/plugins/__init__.pyo
+ranger/plugins/devicons.pyo
+ranger/plugins/devicons_linemode.pyo
