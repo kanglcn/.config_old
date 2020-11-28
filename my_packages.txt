@@ -1,4 +1,5 @@
 xorg
 yay
 gvim
-
+atool
+ueberzug
