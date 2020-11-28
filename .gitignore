@@ -1,0 +1,10 @@
+# Ignore everything,
+/*
+/*/
+
+# But
+!.gitignore
+!/fish/
+!/omf/
+!/fontconfig/
+!my_packages.txt
