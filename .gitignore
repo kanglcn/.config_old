@@ -9,6 +9,7 @@
 !/fontconfig/
 !my_packages.txt
 !mybashrc
+!alacritty
 
 # ranger
 !/ranger/
