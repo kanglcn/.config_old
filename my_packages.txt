@@ -3,3 +3,10 @@ yay
 gvim
 atool
 ueberzug
+xorg-xev
+polybar
+rofi
+picom
+feh
+fcitx-im
+fcitx-configtool
