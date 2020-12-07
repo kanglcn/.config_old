@@ -10,3 +10,4 @@ picom
 feh
 fcitx-im
 fcitx-configtool
+xorg-xbacklight
