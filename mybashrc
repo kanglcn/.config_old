@@ -15,6 +15,6 @@ export EDITOR=nvim;
 alias v="nvim"
 #alias vi="nvim"
 alias vim="nvim"
-
+export QT_QPA_PLATFORMTHEME=qt5ct;
 fish
 
