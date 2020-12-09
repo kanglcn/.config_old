@@ -11,3 +11,5 @@ feh
 fcitx-im
 fcitx-configtool
 xorg-xbacklight
+zathura
+zathura-pdf-mupdf
