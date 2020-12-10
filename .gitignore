@@ -14,8 +14,8 @@
 !polybar
 !my_python_packages.txt
 !/nvim/
-nvim/plugged/*
-nvim/autoload/*
+nvim/plugged/
+nvim/autoload/
 # ranger
 !/ranger/
 ranger/plugins/__pycache__/*
