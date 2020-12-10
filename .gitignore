@@ -13,7 +13,7 @@
 !gtkrc
 !polybar
 !my_python_packages.txt
-!nvim/
+!/nvim/
 nvim/plugged/*
 nvim/autoload/*
 # ranger
