@@ -16,7 +16,6 @@
 !/nvim/
 nvim/plugged/*
 nvim/autoload/*
-!coc/ultisnips/
 # ranger
 !/ranger/
 ranger/plugins/__pycache__/*
