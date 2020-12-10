@@ -13,7 +13,9 @@
 !gtkrc
 !polybar
 !my_python_packages.txt
-!nvim/init.vim
+!nvim/
+nvim/plugged/*
+nvim/autoload/*
 # ranger
 !/ranger/
 ranger/plugins/__pycache__/*
