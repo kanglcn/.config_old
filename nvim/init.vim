@@ -254,6 +254,7 @@ let g:coc_global_extensions = [
 	\ 'coc-prettier',
 	\ 'coc-pyright',
 	\ 'coc-vimtex',
+	\ 'coc-snippets',
 	\ 'coc-sh',
 	\ 'coc-vimlsp']
 
