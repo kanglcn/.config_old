@@ -13,7 +13,7 @@
 !i3
 !gtkrc
 !polybar
-
+!my_python_packages.txt
 # ranger
 !/ranger/
 ranger/plugins/__pycache__/*

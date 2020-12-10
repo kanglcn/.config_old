@@ -13,3 +13,4 @@ fcitx-configtool
 xorg-xbacklight
 zathura
 zathura-pdf-mupdf
+xdotool
