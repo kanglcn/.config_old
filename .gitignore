@@ -10,7 +10,8 @@
 !mybashrc
 !alacritty
 !i3
-!gtkrc
+!/gtk-3.0/
+!/gtk-2.0/
 !polybar
 !my_python_packages.txt
 !/nvim/

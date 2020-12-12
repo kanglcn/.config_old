@@ -275,8 +275,8 @@ for_window [class="Xfburn"] floating enable
 ##################################
 
 # Set inner/outer gaps
-gaps inner 17
-gaps outer -2
+gaps inner 10
+gaps outer 0
 
 smart_gaps on
 smart_borders on

@@ -77,9 +77,6 @@ set ruler
 set wildmenu
 set showcmd
 
-" Show two status bar
-set laststatus=2
-
 " Prevent auto line split
 set wrap
 set tw=0
@@ -294,9 +291,6 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Coc snippets
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
 
