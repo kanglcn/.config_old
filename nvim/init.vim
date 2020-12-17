@@ -33,6 +33,7 @@ filetype plugin indent on
 " Enable using mouse
 set mouse=a
 
+set cursorline
 " UTF-8 encoding
 set encoding=utf-8
 
@@ -329,7 +330,6 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
-
 "ultisnips
 "let g:UltiSnipsExpandTrigger="<c>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"

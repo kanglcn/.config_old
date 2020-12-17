@@ -1,15 +1,65 @@
+global !p
+texMathZones = ['texMathZone']
+texTextZones = ['texMathText']
+texZones     = texMathZones + texTextZones
+def math():
+	synstackNames = vim.eval("map(synstack(line('.'), max([col('.') - 1, 1])), 'synIDattr(v:val, ''name'')')")
+	try:
+		first = next(
+            n for n in reversed(synstackNames)
+            if any(n.find(z) == 0 for z in texZones)
+        )
+		return any(first.find(z) == 0 for z in texMathZones)
+	except StopIteration:
+		return False
+endglobal
+
+snippet useurl "usepackage hyperref & url" b
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+endsnippet
+
 snippet article "Basic article" b
 \documentclass[a4paper]{article}
 
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage{indentfirst}
-\usepackage{amsmath, amssymb}
+\usepackage{authblk}
+\usepackage[activate={true,nocompatibility},
+	final,
+	tracking=true,
+	kerning=true,
+	spacing=true,
+	factor=1100,
+	stretch=10,
+	shrink=10]{microtype}   % microtypography
+\usepackage{cite}
 
 \begin{document}
 \title{$0}
-\author{Kang Liang}
+\author[a]{Kang Liang\thanks{Email:kangl@smu.edu}}
+\affil[a]{Roy M. Huffington Department of Earth Sciences, Southern Methodist University, Dallas, Texas, USA}
+\date{\today}
 \maketitle
 
+\bibliographystyle{plain}
+\bibliography{reference}
 \end{document}
+endsnippet
+
+snippet pac "Package" b
+\usepackage[${1:options}]{${2:package}}$0
+endsnippet
+
+snippet usemath "Use some math package" b
+% Mathematical
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{mathtools}  % more math
+\usepackage{bbm}                    % '\mathbbm' for digits
+\usepackage{bm}                     % bold symbol for greek letters
+\usepackage[ruled]{algorithm2e}     % Algorithms package
+\usepackage{nicefrac}               % compact symbols for 1/2, etc.
 endsnippet
 
 snippet beg "begin{} / end{}" b
@@ -18,6 +68,74 @@ snippet beg "begin{} / end{}" b
 \\end{$1}
 endsnippet
 
-snippet / "Fraction" i
-\\frac{${VISUAL}}{$1}$0
+snippet equ "Equation" b
+\begin{equation}
+	$0
+\end{equation}
 endsnippet
+
+snippet ali "Align equation" b
+\begin{align}
+	$0
+\end{align}
+endsnippet
+
+snippet enum "Enumerate" b
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize" b
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+context "math()"
+snippet / "Fraction" iA
+\frac{$1}{$2}$0
+endsnippet
+
+snippet phase "InSAR phase components" b
+\begin{equation}
+\phi_{obs}(t_i,t_j) =\phi_{def}(t_i,t_j)+\phi_{atm}(t_i,t_j)+\phi_{dem}(t_i,t_j)+\Delta \phi_{orb}(t_i,t_j)+\Delta \phi_{noise}(t_i,t_j) 
+\end{equation}
+endsnippet
+# vim:ft=snippets
+'alpha',
+'beta',
+'alpha',
+'beta',
+'gamma',
+'Gamma',
+'delta',
+'Delta',
+'eps',
+'zeta',
+'eta',
+'theta',
+'Theta',
+'iota',
+'kappa',
+'lambda',
+'Lambda',
+'mu',
+'nu',
+'xi',
+'Xi',
+'pi',
+'Pi',
+'rho',
+'sigma',
+'Sigma',
+'tau',
+'upsilon',
+'Upsilon',
+'fy',
+'Fy',
+'chi',
+'psi',
+'Psi',
+'omega',
+'Omega',
