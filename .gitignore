@@ -8,16 +8,16 @@
 !/fontconfig/
 !my_packages.txt
 !mybashrc
-!alacritty
+!alacritty/
 !i3
 !/gtk-3.0/
 !/gtk-2.0/
-!polybar
+!polybar/
 !my_python_packages.txt
 !/nvim/
 nvim/*
 !nvim/init.vim
-!nvim/UltiSnips
+!nvim/UltiSnips/
 # ranger
 !/ranger/
 ranger/plugins/__pycache__/*
