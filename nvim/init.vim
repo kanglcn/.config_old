@@ -153,15 +153,21 @@ map <LEADER>sc :set spell!<CR>
 call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
-Plug 'liuchengxu/eleline.vim'
 Plug 'ajmwagar/vim-deus'
 Plug 'dracula/vim', { 'as': 'dracula' }
+
+" Status line
+Plug 'liuchengxu/eleline.vim'
+
+" Visual enhancement
+Plug 'luochen1990/rainbow'
 
 " LaTeX
 Plug 'lervag/vimtex'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
+" English gramma checking
 Plug 'rhysd/vim-grammarous'
 "Plug 'SirVer/ultisnips'
 "" File navigation
@@ -334,3 +340,6 @@ let g:tex_conceal='abdmg'
 "let g:UltiSnipsExpandTrigger="<c>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" rainbow
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
