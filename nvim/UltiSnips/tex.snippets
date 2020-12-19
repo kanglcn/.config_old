@@ -33,7 +33,8 @@ snippet article "Basic article" b
 	spacing=true,
 	factor=1100,
 	stretch=10,
-	shrink=10]{microtype}   % microtypography
+	shrink=10]{microtype}   % microtypography.
+% microtype package is not fully supported by xelatex, so when using xelatex, don't use this package.
 \usepackage{cite}
 
 \begin{document}
@@ -48,13 +49,14 @@ snippet article "Basic article" b
 \end{document}
 endsnippet
 
-snippet pac "Package" b
+snippet usepac "Package" b
 \usepackage[${1:options}]{${2:package}}$0
 endsnippet
 
 snippet usemath "Use some math package" b
 % Mathematical
 \usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{commath}
 \usepackage{mathtools}  % more math
 \usepackage{bbm}                    % '\mathbbm' for digits
 \usepackage{bm}                     % bold symbol for greek letters
@@ -62,10 +64,69 @@ snippet usemath "Use some math package" b
 \usepackage{nicefrac}               % compact symbols for 1/2, etc.
 endsnippet
 
+snippet delcaremathoperator "Delcare Math Operater" b
+% Complex numbers
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
+% Linear algebra
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\rank}{rank}
+% Probability
+\DeclareMathOperator{\p}{P}  % Probability
+\DeclareMathOperator{\Var}{Var}  % Variance
+\DeclareMathOperator{\Cov}{Cov}  % Covariance
+% Optimization
+\DeclareMathOperator*{\argmin}{\arg\!\min}  % with star: under subscript
+\DeclareMathOperator*{\argmax}{\arg\!\max}
+endsnippet
+
+snippet mathcommand "New math command" iA
+\newcommand{\minimize}[2]{ \underset{ {#1} }{\text{minimize }} {#2} }
+\newcommand{\maximize}[2]{ \underset{ {#1} }{\text{maximize }} {#2} }
+\newcommand{\avgsum}[3]{\frac{1}{ {#3} } \sum_{ {#1}={#2} }^{ {#3} }}
+endsnippet
+
 snippet beg "begin{} / end{}" b
 \\begin{$1}
 	$0
 \\end{$1}
+endsnippet
+
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
+\end{table}
+endsnippet
+
+snippet fig "Figure environment" b
+\begin{figure}[${1:htpb}]
+	\centering
+	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{figure}
+endsnippet
+
+snippet mk "Inline Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+	snip.rv = ' '
+else:
+	snip.rv = ''
+`$2
+endsnippet
+
+snippet dm "Displaied Math \[...\]" bA
+\[
+${1:${VISUAL}}
+.\]
+$0
 endsnippet
 
 snippet equ "Equation" b
@@ -92,50 +153,9 @@ snippet item "Itemize" b
 \end{itemize}
 endsnippet
 
-context "math()"
-snippet / "Fraction" iA
-\frac{$1}{$2}$0
-endsnippet
-
 snippet phase "InSAR phase components" b
 \begin{equation}
 \phi_{obs}(t_i,t_j) =\phi_{def}(t_i,t_j)+\phi_{atm}(t_i,t_j)+\phi_{dem}(t_i,t_j)+\Delta \phi_{orb}(t_i,t_j)+\Delta \phi_{noise}(t_i,t_j) 
 \end{equation}
 endsnippet
 # vim:ft=snippets
-'alpha',
-'beta',
-'alpha',
-'beta',
-'gamma',
-'Gamma',
-'delta',
-'Delta',
-'eps',
-'zeta',
-'eta',
-'theta',
-'Theta',
-'iota',
-'kappa',
-'lambda',
-'Lambda',
-'mu',
-'nu',
-'xi',
-'Xi',
-'pi',
-'Pi',
-'rho',
-'sigma',
-'Sigma',
-'tau',
-'upsilon',
-'Upsilon',
-'fy',
-'Fy',
-'chi',
-'psi',
-'Psi',
-'omega',
-'Omega',
