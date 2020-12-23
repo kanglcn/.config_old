@@ -14,3 +14,6 @@ xorg-xbacklight
 zathura
 zathura-pdf-mupdf
 xdotool
+fzf
+ccat
+highlight

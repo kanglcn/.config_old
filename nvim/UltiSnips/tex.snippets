@@ -14,11 +14,6 @@ def math():
 		return False
 endglobal
 
-snippet useurl "usepackage hyperref & url" b
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
-endsnippet
-
 snippet article "Basic article" b
 \documentclass[a4paper]{article}
 
@@ -49,10 +44,22 @@ snippet article "Basic article" b
 \end{document}
 endsnippet
 
+snippet useurl "usepackage hyperref & url" b
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+endsnippet
+
 snippet usepac "Package" b
 \usepackage[${1:options}]{${2:package}}$0
 endsnippet
 
+snippet useminted "Display code" b
+\usepackage{minted}
+\usepackage{xcolor}
+\definecolor{background}{rgb}{0.95,0.95,0.95}
+\setminted{autogobble,breaklines=true,bgcolor=background}
+
+endsnippet
 snippet usemath "Use some math package" b
 % Mathematical
 \usepackage{amsmath, amssymb, amsthm, amsfonts}

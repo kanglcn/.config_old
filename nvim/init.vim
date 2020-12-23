@@ -62,10 +62,12 @@ set shortmess+=c
 let mapleader=" "
 
 " ===
-" ===
-" ===
 nnoremap J 20j
 nnoremap K 20k
+nnoremap H 0
+nnoremap L $
+
+inoremap jk <esc>
 
 " ===
 " === Main code display
@@ -146,6 +148,36 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 " Spelling Check with <space>sc
 map <LEADER>sc :set spell!<CR>
 
+" Compile function
+noremap <F5> :call CompileRun()<CR>
+func! CompileRun()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		set splitbelow
+		exec "!g++ -std=c++11 % -Wall -o %<"
+		:sp
+		:res -15
+		:term ./%<
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+	elseif &filetype == 'tex'
+		silent! exec "VimtexStop"
+		silent! exec "VimtexCompile"
+	endif
+endfunc
+
 " ===
 " === Install Plugins with Vim-Plug
 " ===
@@ -154,21 +186,46 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Pretty Dress
 Plug 'ajmwagar/vim-deus'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arzg/vim-colors-xcode'
 
 " Status line
 Plug 'liuchengxu/eleline.vim'
 
 " Visual enhancement
 Plug 'luochen1990/rainbow'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ryanoasis/vim-devicons'
+Plug 'mg979/vim-xtabline'
+Plug 'RRethy/vim-illuminate'
+
+" File navigation
+Plug 'junegunn/fzf.vim'
+Plug 'kevinhwang91/rnvimr'
+Plug 'airblade/vim-rooter'
+Plug 'pechorin/any-jump.vim'
 
 " LaTeX
 Plug 'lervag/vimtex'
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
 " English gramma checking
 Plug 'rhysd/vim-grammarous'
+
+" markdown
+"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
+Plug 'dkarter/bullets.vim'
+
+" Editor enhancement
+Plug 'tpope/vim-surround'
+"Plug 'gcmt/wildfire.vim'
+Plug 'terryma/vim-expand-region'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+" Taglist
+Plug 'liuchengxu/vista.vim'
+
 "Plug 'SirVer/ultisnips'
 "" File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -246,7 +303,7 @@ call plug#end()
 
 " Dress
 "color deus
-colorscheme dracula
+colorscheme deus
 "===================================================================
 "===coc.nvim
 "===================================================================
@@ -336,6 +393,11 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+
+"if &filetype == 'tex'
+"  nnoremap <LEADER>v <plug>(vimtex-toc-toggle)
+"  echo 'hi'
+"endif
 "ultisnips
 "let g:UltiSnipsExpandTrigger="<c>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -343,3 +405,141 @@ let g:tex_conceal='abdmg'
 
 " rainbow
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+" FZF
+set rtp+=/usr/bin/fzf
+" set rtp+=/home/david/.linuxbrew/opt/fzf
+"nnoremap <c-p> :Leaderf file<CR>
+"" noremap <silent> <C-p> :Files<CR>
+"noremap <silent> <C-f> :Rg<CR>
+"noremap <silent> <C-h> :History<CR>
+""noremap <C-t> :BTags<CR>
+"noremap <silent> <C-l> :Lines<CR>
+"noremap <silent> <C-w> :Buffers<CR>
+"noremap <leader>; :History:<CR>
+"
+"let g:fzf_preview_window = 'right:60%'
+"let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+"
+"function! s:list_buffers()
+"  redir => list
+"  silent ls
+"  redir END
+"  return split(list, "\n")
+"endfunction
+"
+"function! s:delete_buffers(lines)
+"  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+"endfunction
+"
+"command! BD call fzf#run(fzf#wrap({
+"  \ 'source': s:list_buffers(),
+"  \ 'sink*': { lines -> s:delete_buffers(lines) },
+"  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+"\ }))
+"
+"noremap <c-d> :BD<CR>
+"
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+
+" markdown-preview.nvim
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0
+    \ }
+
+let g:mkdp_filetypes = ['markdown']
+
+" vim-table-mode
+noremap <LEADER>tm :TableModeToggle<CR>
+TableModeToggle
+
+" bullets.vim
+let g:bullets_enabled_file_types = [
+    \ 'markdown',
+    \ 'text',
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
+
+" rnvimr
+let g:rnvimr_enable_ex = 1
+let g:rnvimr_enable_picker = 1
+let g:rnvimr_draw_border = 1
+" let g:rnvimr_bw_enable = 1
+highlight link RnvimrNormal CursorLine
+nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+let g:rnvimr_action = {
+            \ '<C-t>': 'NvimEdit tabedit',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
+let g:rnvimr_layout = { 'relative': 'editor',
+            \ 'width': &columns,
+            \ 'height': &lines,
+            \ 'col': 0,
+            \ 'row': 0,
+            \ 'style': 'minimal' }
+let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
+
+" vim-visual-multi
+let g:VM_maps = {}
+let g:VM_maps["Select Cursor Down"] = '<C-j>'
+let g:VM_maps["Select Cursor Up"]   = '<C-k>'
+
+" vim-rooter
+let g:rooter_patterns = ['Makefile', '.git/']
+let g:rooter_silent_chdir = 1
+
+" vista.vim
+function! TocAndVista()
+	if &filetype != 'tex'
+		nnoremap <LEADER>v :Vista!!<CR>
+	elseif &filetype == 'tex'
+		nmap <LEADER>v <plug>(vimtex-toc-toggle) <C-w>h
+    echo 'hi'
+	endif
+endfunction
+
+autocmd FileType * call TocAndVista()
+
+"nmap <LEADER>v  <plug>(vimtex-view)
+nnoremap <c-t> :silent! Vista finder coc<CR>
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'coc'
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+
+" vim-expand-region
+vmap v <Plug>(expand_region_expand)
+call expand_region#custom_text_objects('tex', {
+      \ 'ic' :0,
+      \ 'id' :0,
+      \ 'ie' :0,
+      \ 'i$' :0,
+      \ 'ac' :0,
+      \ 'ad' :0,
+      \ 'ae' :0,
+      \ 'a$' :0,
+      \ })
+call expand_region#custom_text_objects('markdown', { 'i|' :0, 'a|' :0} )
