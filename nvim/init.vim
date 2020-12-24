@@ -103,7 +103,7 @@ syntax on
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Change directory to current directory
-set autochdir
+"set autochdir
 
 " Code fold
 set foldmethod=indent
@@ -175,8 +175,13 @@ func! CompileRun()
 	elseif &filetype == 'tex'
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
+"	elseif &filetype == 'vim'
+"		:source %
 	endif
 endfunc
+
+" Source vim
+nnoremap S :w<CR>:source $MYVIMRC<CR>
 
 " ===
 " === Install Plugins with Vim-Plug
@@ -202,7 +207,10 @@ Plug 'RRethy/vim-illuminate'
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-rooter'
-Plug 'pechorin/any-jump.vim'
+"Plug 'pechorin/any-jump.vim'
+
+" Undotree
+Plug 'mbbill/undotree'
 
 " LaTeX
 Plug 'lervag/vimtex'
@@ -225,6 +233,9 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Taglist
 Plug 'liuchengxu/vista.vim'
+
+" Git
+Plug 'airblade/vim-gitgutter'
 
 "Plug 'SirVer/ultisnips'
 "" File navigation
@@ -394,15 +405,6 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-"if &filetype == 'tex'
-"  nnoremap <LEADER>v <plug>(vimtex-toc-toggle)
-"  echo 'hi'
-"endif
-"ultisnips
-"let g:UltiSnipsExpandTrigger="<c>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " rainbow
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
@@ -410,17 +412,19 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 set rtp+=/usr/bin/fzf
 " set rtp+=/home/david/.linuxbrew/opt/fzf
 "nnoremap <c-p> :Leaderf file<CR>
-"" noremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <LEADER>ff :Files<CR>
 "noremap <silent> <C-f> :Rg<CR>
-"noremap <silent> <C-h> :History<CR>
+nnoremap <silent> <LEADER>fhh :History<CR>
+nnoremap <LEADER>fh: :History:<CR>
+nnoremap <LEADER>fh/ :History/<CR>
+nnoremap <LEADER>fc :Colors<CR>
+nnoremap <LEADER>fb :Buffers<CR>
 ""noremap <C-t> :BTags<CR>
-"noremap <silent> <C-l> :Lines<CR>
-"noremap <silent> <C-w> :Buffers<CR>
-"noremap <leader>; :History:<CR>
-"
-"let g:fzf_preview_window = 'right:60%'
-"let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-"
+nnoremap <LEADER>fl :Lines<CR>
+
+let g:fzf_preview_window = 'right:60%'
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
 "function! s:list_buffers()
 "  redir => list
 "  silent ls
@@ -440,7 +444,7 @@ set rtp+=/usr/bin/fzf
 "
 "noremap <c-d> :BD<CR>
 "
-"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 
 " markdown-preview.nvim
 let g:mkdp_auto_start = 0
@@ -466,7 +470,7 @@ let g:mkdp_filetypes = ['markdown']
 
 " vim-table-mode
 noremap <LEADER>tm :TableModeToggle<CR>
-TableModeToggle
+autocmd BufRead,BufNewFile *.md TableModeToggle
 
 " bullets.vim
 let g:bullets_enabled_file_types = [
@@ -482,7 +486,7 @@ let g:rnvimr_enable_picker = 1
 let g:rnvimr_draw_border = 1
 " let g:rnvimr_bw_enable = 1
 highlight link RnvimrNormal CursorLine
-nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
+nnoremap <silent> <LEADER>r :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
             \ '<C-t>': 'NvimEdit tabedit',
             \ '<C-x>': 'NvimEdit split',
@@ -513,13 +517,11 @@ function! TocAndVista()
 		nnoremap <LEADER>v :Vista!!<CR>
 	elseif &filetype == 'tex'
 		nmap <LEADER>v <plug>(vimtex-toc-toggle) <C-w>h
-    echo 'hi'
 	endif
 endfunction
 
 autocmd FileType * call TocAndVista()
 
-"nmap <LEADER>v  <plug>(vimtex-view)
 nnoremap <c-t> :silent! Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'coc'
@@ -543,3 +545,24 @@ call expand_region#custom_text_objects('tex', {
       \ 'a$' :0,
       \ })
 call expand_region#custom_text_objects('markdown', { 'i|' :0, 'a|' :0} )
+
+" undotree
+noremap <LEADER>u :UndotreeToggle<CR>
+let g:undotree_DiffAutoOpen = 1
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_ShortIndicators = 1
+let g:undotree_WindowLayout = 2
+let g:undotree_DiffpanelHeight = 8
+let g:undotree_SplitWidth = 24
+
+" vim-gitgutter
+" let g:gitgutter_signs = 0
+let g:gitgutter_sign_allow_clobber = 0
+let g:gitgutter_map_keys = 0
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_preview_win_floating = 1
+" autocmd BufWritePost * GitGutter
+nnoremap <LEADER>gf :GitGutterFold<CR>
+nnoremap <LEADER>gh :GitGutterPreviewHunk<CR>
+nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
+nnoremap <LEADER>g= :GitGutterNextHunk<CR>
