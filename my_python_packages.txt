@@ -3,3 +3,6 @@ matplotlib
 neovim-remote
 pynvim
 pygments
+autopep8
+yapf
+black
