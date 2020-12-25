@@ -9,9 +9,9 @@
 " ===
 " === Auto load Vim Plug for first time uses
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " ===
@@ -66,8 +66,6 @@ nnoremap J 20j
 nnoremap K 20k
 nnoremap H 0
 nnoremap L $
-
-inoremap jk <esc>
 
 " ===
 " === Main code display
@@ -151,33 +149,33 @@ map <LEADER>sc :set spell!<CR>
 " Compile function
 noremap <F5> :call CompileRun()<CR>
 func! CompileRun()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'cpp'
-		set splitbelow
-		exec "!g++ -std=c++11 % -Wall -o %<"
-		:sp
-		:res -15
-		:term ./%<
-	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
-	elseif &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-"	elseif &filetype == 'vim'
-"		:source %
-	endif
+  exec "w"
+  if &filetype == 'c'
+    exec "!g++ % -o %<"
+    exec "!time ./%<"
+  elseif &filetype == 'cpp'
+    set splitbelow
+    exec "!g++ -std=c++11 % -Wall -o %<"
+    :sp
+    :res -15
+    :term ./%<
+  elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!time java %<"
+  elseif &filetype == 'sh'
+    :!time bash %
+  elseif &filetype == 'python'
+    set splitbelow
+    :sp
+    :term python3 %
+  elseif &filetype == 'markdown'
+    exec "MarkdownPreview"
+  elseif &filetype == 'tex'
+    silent! exec "VimtexStop"
+    silent! exec "VimtexCompile"
+    " elseif &filetype == 'vim'
+    "   :source %
+  endif
 endfunc
 
 " Source vim
@@ -230,36 +228,43 @@ Plug 'tpope/vim-surround'
 "Plug 'gcmt/wildfire.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'jiangmiao/auto-pairs'
+Plug 'tomtom/tcomment_vim' " <space>c to comment
+Plug 'theniceboy/antovim' " gs to switch
+Plug 'junegunn/vim-after-object' " da= : delete what's after =
+Plug 'junegunn/vim-easy-align'
+Plug 'rhysd/clever-f.vim' " f to find the next one
+Plug 'chrisbra/NrrwRgn'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'theniceboy/argtextobj.vim'
+Plug 'svermeulen/vim-subversive'
 
-" Taglist
+" marks
+Plug 'Yilin-Yang/vim-markbar'
+
+" registers
+Plug 'junegunn/vim-peekaboo'
+
+"Taglist
 Plug 'liuchengxu/vista.vim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'cohama/agit.vim'
 
-"Plug 'SirVer/ultisnips'
-"" File navigation
-"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
-"
-"" Taglist
-"Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
-"
+" Code format
+Plug 'Chiel92/vim-autoformat'
+
+" Python
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+Plug 'tweekmonster/braceless.vim'
 "" Error checking
 "Plug 'w0rp/ale'
 "
 "" Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'davidhalter/jedi-vim'
-"
-"" Undo Tree
-"Plug 'mbbill/undotree/'
-"
-"" Snippits
-"" Plug 'SirVer/ultisnips'  , { 'for': ['vim-plug', 'python'] }  
-"" Plug 'honza/vim-snippets', { 'for': ['vim-plug', 'python'] }
-"
+
 "" Other visual enhancement
 "Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'itchyny/vim-cursorword'
@@ -269,23 +274,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'rhysd/conflict-marker.vim'
 "Plug 'tpope/vim-fugitive'
 "Plug 'mhinz/vim-signify'
-"Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 "
-"" HTML, CSS, JavaScript, PHP, JSON, etc.
-"Plug 'elzr/vim-json'
-"Plug 'hail2u/vim-css3-syntax'
-"Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
-"Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
-"Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
-"Plug 'mattn/emmet-vim'
-"
-"" Python
-"Plug 'vim-scripts/indentpython.vim'
-"" Plug 'vim-python/python-syntax', { 'for' :['python', 'vim-plug'] }
-"
-"" Markdown
-"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-"Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 "Plug 'vimwiki/vimwiki'
 "
 "" For general writing
@@ -293,16 +282,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'ron89/thesaurus_query.vim'
 "
 "" Bookmarks
-"Plug 'kshenoy/vim-signature'
 "
 "" Other useful utilities
 "Plug 'jiangmiao/auto-pairs'
 "Plug 'terryma/vim-multiple-cursors'
 "Plug 'junegunn/goyo.vim' " distraction free writing mode
 "Plug 'ntpeters/vim-better-whitespace', { 'on': ['EnableWhitespace', 'ToggleWhitespace'] } "displays trailing whitespace (after :EnableWhitespace, vim slows down)
-"Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
 "Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
-"Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
 "Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
 "
 "" Dependencies
@@ -319,23 +305,22 @@ colorscheme deus
 "===coc.nvim
 "===================================================================
 let g:coc_global_extensions = [
-	\ 'coc-clangd',
-	\ 'coc-cmake',
-	\ 'coc-diagnostic',
-	\ 'coc-json',
-	\ 'coc-lists',
-	\ 'coc-prettier',
-	\ 'coc-pyright',
-	\ 'coc-snippets',
-	\ 'coc-vimtex',
-	\ 'coc-sh',
-	\ 'coc-vimlsp']
+      \ 'coc-clangd',
+      \ 'coc-cmake',
+      \ 'coc-diagnostic',
+      \ 'coc-json',
+      \ 'coc-lists',
+      \ 'coc-pyright',
+      \ 'coc-snippets',
+      \ 'coc-vimtex',
+      \ 'coc-sh',
+      \ 'coc-vimlsp']
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -351,7 +336,7 @@ nnoremap coc :CocCommand<CR>
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -393,9 +378,6 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-
-"coc-prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "vimtex
 let g:vimtex_compiler_progname = 'nvr'
@@ -440,7 +422,7 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 "  \ 'source': s:list_buffers(),
 "  \ 'sink*': { lines -> s:delete_buffers(lines) },
 "  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-"\ }))
+      "\ }))
 "
 "noremap <c-d> :BD<CR>
 "
@@ -453,18 +435,18 @@ let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
 
 let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
+      \ 'mkit': {},
+      \ 'katex': {},
+      \ 'uml': {},
+      \ 'maid': {},
+      \ 'disable_sync_scroll': 0,
+      \ 'sync_scroll_type': 'middle',
+      \ 'hide_yaml_meta': 1,
+      \ 'sequence_diagrams': {},
+      \ 'flowchart_diagrams': {},
+      \ 'content_editable': v:false,
+      \ 'disable_filename': 0
+      \ }
 
 let g:mkdp_filetypes = ['markdown']
 
@@ -474,11 +456,11 @@ autocmd BufRead,BufNewFile *.md TableModeToggle
 
 " bullets.vim
 let g:bullets_enabled_file_types = [
-    \ 'markdown',
-    \ 'text',
-    \ 'gitcommit',
-    \ 'scratch'
-    \]
+      \ 'markdown',
+      \ 'text',
+      \ 'gitcommit',
+      \ 'scratch'
+      \]
 
 " rnvimr
 let g:rnvimr_enable_ex = 1
@@ -488,18 +470,18 @@ let g:rnvimr_draw_border = 1
 highlight link RnvimrNormal CursorLine
 nnoremap <silent> <LEADER>r :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
+      \ '<C-t>': 'NvimEdit tabedit',
+      \ '<C-x>': 'NvimEdit split',
+      \ '<C-v>': 'NvimEdit vsplit',
+      \ 'gw': 'JumpNvimCwd',
+      \ 'yw': 'EmitRangerCwd'
+      \ }
 let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': &columns,
-            \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
-            \ 'style': 'minimal' }
+      \ 'width': &columns,
+      \ 'height': &lines,
+      \ 'col': 0,
+      \ 'row': 0,
+      \ 'style': 'minimal' }
 let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 " vim-visual-multi
@@ -513,11 +495,11 @@ let g:rooter_silent_chdir = 1
 
 " vista.vim
 function! TocAndVista()
-	if &filetype != 'tex'
-		nnoremap <LEADER>v :Vista!!<CR>
-	elseif &filetype == 'tex'
-		nmap <LEADER>v <plug>(vimtex-toc-toggle) <C-w>h
-	endif
+  if &filetype != 'tex'
+    nnoremap <LEADER>v :Vista!!<CR>
+  elseif &filetype == 'tex'
+    nmap <LEADER>v <plug>(vimtex-toc-toggle) <C-w>h
+  endif
 endfunction
 
 autocmd FileType * call TocAndVista()
@@ -528,12 +510,17 @@ let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
+      \   "function": "\uf794",
+      \   "variable": "\uf71b",
+      \  }
 
 " vim-expand-region
 vmap v <Plug>(expand_region_expand)
+call expand_region#custom_text_objects({
+      \ 'ia' :0,
+      \ 'aa' :0,
+      \ }) " argument tex object provided by argtextobj.vim
+
 call expand_region#custom_text_objects('tex', {
       \ 'ic' :0,
       \ 'id' :0,
@@ -564,5 +551,31 @@ let g:gitgutter_preview_win_floating = 1
 " autocmd BufWritePost * GitGutter
 nnoremap <LEADER>gf :GitGutterFold<CR>
 nnoremap <LEADER>gh :GitGutterPreviewHunk<CR>
-nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
-nnoremap <LEADER>g= :GitGutterNextHunk<CR>
+nnoremap <LEADER>gk :GitGutterPrevHunk<CR>
+nnoremap <LEADER>gj :GitGutterNextHunk<CR>
+
+"agit.vim
+nnoremap <LEADER>gl :Agit<CR>
+let g:agit_no_default_mappings = 1
+
+" vim-autoformat
+let g:autoformat_verbosemode=1
+nnoremap <F3> :Autoformat<CR>
+
+" braceless.vim
+autocmd FileType python BracelessEnable +indent +fold +fold-slow +highlight
+
+" tcomment_vim
+nmap <LEADER>c gc
+vmap <LEADER>c gc
+
+" vim-easy-align
+xmap <LEADER>a <Plug>(EasyAlign)
+vmap <LEADER>a <Plug>(EasyAlign)
+
+" splitjoin.vim
+let g:splitjoin_split_mapping = ';s'
+let g:splitjoin_join_mapping = ';j'
+
+" vim-markbar
+nmap <Leader>m <Plug>ToggleMarkbar
