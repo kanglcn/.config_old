@@ -17,3 +17,10 @@ xdotool
 fzf
 ccat
 highlight
+thefuck
+rmtrash
+ccat
+exa
+ripgrep
+fd
+tldr

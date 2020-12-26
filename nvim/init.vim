@@ -190,6 +190,18 @@ call plug#begin('~/.config/nvim/plugged')
 " Pretty Dress
 Plug 'ajmwagar/vim-deus'
 Plug 'arzg/vim-colors-xcode'
+Plug 'tomasr/molokai'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'morhetz/gruvbox'
+  let g:gruvbox_contrast_dark = 'soft'
+Plug 'yuttie/hydrangea-vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'AlessandroYorba/Despacio'
+Plug 'cocopon/iceberg.vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'nightsense/snow'
+Plug 'nightsense/stellarized'
+Plug 'nightsense/cosmic_latte'
 
 " Status line
 Plug 'liuchengxu/eleline.vim'
@@ -217,11 +229,11 @@ Plug 'lervag/vimtex'
 Plug 'rhysd/vim-grammarous'
 
 " markdown
-"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
-Plug 'dkarter/bullets.vim'
+"Plug 'dkarter/bullets.vim'
 
 " Editor enhancement
 Plug 'tpope/vim-surround'
