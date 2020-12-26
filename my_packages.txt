@@ -24,3 +24,6 @@ exa
 ripgrep
 fd
 tldr
+zsh-autosuggestions
+zsh-fast-syntax-highlighting
+zsh-theme-powerlevel10k-git

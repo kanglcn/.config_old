@@ -210,6 +210,7 @@ Plug 'liuchengxu/eleline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'mg979/vim-xtabline'
 Plug 'RRethy/vim-illuminate'
 
