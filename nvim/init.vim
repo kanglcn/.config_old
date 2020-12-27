@@ -230,7 +230,7 @@ Plug 'lervag/vimtex'
 Plug 'rhysd/vim-grammarous'
 
 " markdown
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown', 'vim-plug'] }
@@ -241,7 +241,7 @@ Plug 'tpope/vim-surround'
 "Plug 'gcmt/wildfire.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs' "auto pair for '' () etc
 Plug 'tomtom/tcomment_vim' " <space>c to comment
 Plug 'theniceboy/antovim' " gs to switch
 Plug 'junegunn/vim-after-object' " da= : delete what's after =
@@ -276,47 +276,15 @@ Plug 'tweekmonster/braceless.vim'
 "
 "" Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'davidhalter/jedi-vim'
 
-"" Other visual enhancement
-"Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'itchyny/vim-cursorword'
-"Plug 'tmhedberg/SimpylFold'
-"
-"" Git
-"Plug 'rhysd/conflict-marker.vim'
-"Plug 'tpope/vim-fugitive'
-"Plug 'mhinz/vim-signify'
-"
-"Plug 'vimwiki/vimwiki'
-"
-"" For general writing
-"Plug 'reedes/vim-wordy'
-"Plug 'ron89/thesaurus_query.vim'
-"
-"" Bookmarks
-"
-"" Other useful utilities
-"Plug 'jiangmiao/auto-pairs'
-"Plug 'terryma/vim-multiple-cursors'
-"Plug 'junegunn/goyo.vim' " distraction free writing mode
-"Plug 'ntpeters/vim-better-whitespace', { 'on': ['EnableWhitespace', 'ToggleWhitespace'] } "displays trailing whitespace (after :EnableWhitespace, vim slows down)
-"Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
-"Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
-"
-"" Dependencies
-"Plug 'MarcWeber/vim-addon-mw-utils'
-"Plug 'kana/vim-textobj-user'
-"Plug 'fadein/vim-FIGlet'
 
 call plug#end()
 
 " Dress
 "color deus
 colorscheme deus
-"===================================================================
-"===coc.nvim
-"===================================================================
+
+" coc.nvim
 let g:coc_global_extensions = [
       \ 'coc-clangd',
       \ 'coc-cmake',
@@ -327,6 +295,7 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-vimtex',
       \ 'coc-sh',
+      \ 'coc-todolist',
       \ 'coc-vimlsp']
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -379,8 +348,8 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
-" Use <space>m to show manual in preview window.
-nnoremap <silent> <LEADER>m :call <SID>show_documentation()<CR>
+" Use <space>m to show documentation in preview window.
+nnoremap <silent> <LEADER>h :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -391,6 +360,8 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+let g:snips_author = 'Kang Liang'
 
 "vimtex
 let g:vimtex_compiler_progname = 'nvr'
