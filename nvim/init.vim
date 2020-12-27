@@ -555,7 +555,7 @@ vmap <LEADER>c gc
 
 " vim-easy-align
 xmap <LEADER>a <Plug>(EasyAlign)
-vmap <LEADER>a <Plug>(EasyAlign)
+nmap <LEADER>a <Plug>(EasyAlign)
 
 " splitjoin.vim
 let g:splitjoin_split_mapping = ';s'
