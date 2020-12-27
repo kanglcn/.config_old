@@ -17,6 +17,7 @@
 !/nvim/
 /nvim/*
 !/nvim/init.vim
+!/nvim/coc-settings.json
 !/nvim/UltiSnips/
 !/zsh/
 # ranger
