@@ -30,6 +30,8 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 
+set termguicolors
+
 " Enable using mouse
 set mouse=a
 
@@ -210,7 +212,7 @@ Plug 'liuchengxu/eleline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ryanoasis/vim-devicons'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'mg979/vim-xtabline'
 Plug 'RRethy/vim-illuminate'
 
@@ -348,8 +350,8 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
-" Use <space>m to show documentation in preview window.
-nnoremap <silent> <LEADER>h :call <SID>show_documentation()<CR>
+" Use gh to show documentation in preview window.
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -402,7 +404,7 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 "  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
 "endfunction
 "
-"command! BD call fzf#run(fzf#wrap({
+command! BD call fzf#run(fzf#wrap({
 "  \ 'source': s:list_buffers(),
 "  \ 'sink*': { lines -> s:delete_buffers(lines) },
 "  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
@@ -563,3 +565,6 @@ let g:splitjoin_join_mapping = ';j'
 
 " vim-markbar
 nmap <Leader>m <Plug>ToggleMarkbar
+
+" vim-hexokinase
+let g:Hexokinase_highlighters = ['backgroundfull']

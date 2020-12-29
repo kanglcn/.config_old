@@ -43,7 +43,7 @@ exec --no-startup-id fcitx5
 exec --no-startup-id xrandr --output DP-1.1.8 --rotate left
 
 # start picom to make the window transparent
-exec --no-startup-id picom -b -i 1.0
+exec --no-startup-id picom -b -i 1.0 --menu-opacity 0.0
 
 # Set background
 exec --no-startup-id ~/linux_scripts/wallpaper.sh
@@ -173,8 +173,8 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 # resize window (you can also use the mouse for that)
 bindsym $mod+Right resize shrink width 10 px or 10 ppt
 bindsym $mod+Up resize grow height 10 px or 10 ppt
@@ -240,7 +240,7 @@ default_floating_border normal
 
 # Hiding borders adjacent to screen edges
 #hide_edge_borders none <vertical|horizontal|both|smart>
-hide_edge_borders none
+hide_edge_borders smart
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 0
@@ -269,6 +269,20 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+
+# Compatiable with KDE
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px
+no_focus [class="plasmashell" window_type="notification"] 
 
 ##################################
 ### Settings for i3-gaps #########

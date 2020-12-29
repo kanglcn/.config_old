@@ -58,6 +58,8 @@ alias find='fd'
 
 alias grep='rg'
 
+alias clc='clear'
+
 # set vim as default editor
 export VISUAL=nvim;
 export EDITOR=nvim;
