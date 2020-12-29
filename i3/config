@@ -43,7 +43,7 @@ exec --no-startup-id fcitx5
 exec --no-startup-id xrandr --output DP-1.1.8 --rotate left
 
 # start picom to make the window transparent
-exec --no-startup-id picom -b -i 1.0 --menu-opacity 0.0
+exec --no-startup-id picom -b -i 1.0 --menu-opacity 1.0 --frame-opacity 1.0
 
 # Set background
 exec --no-startup-id ~/linux_scripts/wallpaper.sh
