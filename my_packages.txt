@@ -27,3 +27,12 @@ tldr
 zsh-autosuggestions
 zsh-fast-syntax-highlighting
 zsh-theme-powerlevel10k-git
+python-pynvim
+jupyterlab
+python-matplotlib
+neovim-remote
+autopep8
+python-pygments
+yapf
+python-black
+python-sh
