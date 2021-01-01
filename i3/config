@@ -60,6 +60,7 @@ floating_modifier $mod
 
 # start a terminal and other applications
 bindsym $mod+Return exec alacritty
+bindsym $mod+g exec google-chrome-stable
 bindsym $mod+r mode "run"
 mode "run"{
   bindsym Return exec alacritty
