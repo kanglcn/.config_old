@@ -21,7 +21,9 @@ font pango:Noto 15
 #font pango:DejaVu Sans Mono 8
 
 # source bashrc
-exec --no-startup-id source ~/.bashrc
+# exec --no-startup-id source ~/.bashrc
+# source zshrc
+exec --no-startup-id source ~/.zshrc
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
