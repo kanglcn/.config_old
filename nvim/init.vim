@@ -284,7 +284,7 @@ call plug#end()
 
 " Dress
 "color deus
-colorscheme deus
+colorscheme dracula
 
 " coc.nvim
 let g:coc_global_extensions = [
@@ -370,7 +370,7 @@ let g:vimtex_compiler_progname = 'nvr'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
+autocmd BufRead,BufNewFile *.tex set conceallevel=1
 let g:tex_conceal='abdmg'
 
 " rainbow

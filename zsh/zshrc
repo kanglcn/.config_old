@@ -45,9 +45,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # trelis
 alias settrelis='nohup /opt/Trelis-16.5/bin/rlm &'
 
-# StaMPS
-source ~/.config/zsh/StaMPS_CONFIG.bash
-
 ## better command
 alias rm='rmtrash'
 alias rmdir='rmdirtrash'
@@ -81,3 +78,4 @@ alias v="nvim"
 alias vim="nvim"
 export QT_QPA_PLATFORMTHEME=qt5ct;
 
+source ~/.config/zsh/all.sh
