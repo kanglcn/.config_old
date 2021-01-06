@@ -204,6 +204,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'nightsense/snow'
 Plug 'nightsense/stellarized'
 Plug 'nightsense/cosmic_latte'
+Plug 'lifepillar/vim-solarized8'
 
 " Status line
 Plug 'liuchengxu/eleline.vim'
