@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Noto 15
+font pango:sans-serif 12
 #font pango:DejaVu Sans Mono 10
 #font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -23,7 +23,7 @@ font pango:Noto 15
 # source bashrc
 # exec --no-startup-id source ~/.bashrc
 # source zshrc
-exec --no-startup-id source ~/.zshrc
+# exec --no-startup-id source ~/.zshrc
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -79,10 +79,11 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 ##bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec rofi -modi drun,run -show drun
+bindcode $mod+40 exec rofi -modi drun,run -show drun
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+d exec --no-startup-id "i3-dmenu-desktop --dmenu='dmenu -i -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%''"
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -191,13 +192,14 @@ bindsym $mod+Left resize grow width 10 px or 10 ppt
 #}
 
 # Theme colors
-# class                   border  backgr. text    indic.   child_border
-client.focused          #556064 #556064 #80FFF9 #FDF6E3
-client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000
-client.background       #2B2C2B
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

@@ -62,10 +62,10 @@ module-margin-right = 2
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ;font-2 = siji:pixelsize=10;1
 
-font-0 = ttf-liberation-sans:fixed:pixelsize=12;1
-font-1 = source han sans cn:pixelsize=12:antialias=false;1
-font-2 = siji:pixelsize=10;1
-font-3 = SauceCodePro Nerd Font:fixelsize=16;3
+font-0 = ttf-liberation-sans:fixed:pixelsize=20;1
+font-1 = source han sans cn:pixelsize=20:antialias=true;1
+font-2 = siji:pixelsize=20;1
+font-3 = SauceCodePro Nerd Font:fixelsize=20;3
 
 modules-left = i3 upload download eth
 modules-center = xwindow

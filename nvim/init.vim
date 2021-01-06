@@ -254,6 +254,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'theniceboy/argtextobj.vim'
 Plug 'svermeulen/vim-subversive'
 
+Plug 'rlue/vim-barbaric'
+
 " marks
 Plug 'Yilin-Yang/vim-markbar'
 

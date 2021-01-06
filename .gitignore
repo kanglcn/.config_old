@@ -20,6 +20,7 @@
 !/nvim/coc-settings.json
 !/nvim/UltiSnips/
 !/zsh/
+!/rofi/
 # ranger
 !/ranger/
 /ranger/plugins/__pycache__/*
