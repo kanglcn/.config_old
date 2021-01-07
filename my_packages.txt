@@ -41,3 +41,5 @@ wps-office-mui-zh-cn
 ttf-wps-fonts
 nerd-fonts-complete
 playerctl
+expect
+openconnect

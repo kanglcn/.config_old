@@ -21,6 +21,7 @@
 !/nvim/UltiSnips/
 !/zsh/
 !/rofi/
+!/update
 # ranger
 !/ranger/
 /ranger/plugins/__pycache__/*
