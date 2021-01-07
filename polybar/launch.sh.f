@@ -1,5 +1,12 @@
 #!/usr/bin/env sh
 
+# A launcher for Polybar which automatically starts the primary bar on the main
+# screen and the secondary bar on all other screens. Additionally, it retrieves
+# the system's first ethernet and wireless interfaces for the network module.
+#
+# Author: Benedikt Vollmerhaus
+# License: MIT
+
 NC='\033[0m'
 RED='\033[31m'
 BLUE='\033[34m'
@@ -12,8 +19,9 @@ launch_bar() {
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-
+while pgrep -u "$(id -u)" -x polybar >/dev/null; do
+  sleep 1;
+done
 
 eth=$(ip link | grep -m 1 -E '\b(en).*\b(state UP)' | awk '{print substr($2, 1, length($2)-1)}')
 wlan=$(ip link | grep -m 1 -E '\b(wl)' | awk '{print substr($2, 1, length($2)-1)}')
@@ -47,8 +55,3 @@ for screen in $(xrandr --query | grep -w connected); do
       ;;
   esac
 done
-
-# # Launch bar1 and bar2
-# polybar example &
-#
-# echo "Bars launched..."
