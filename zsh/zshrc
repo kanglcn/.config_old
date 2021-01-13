@@ -50,7 +50,7 @@ alias rm='rmtrash'
 alias rmdir='rmdirtrash'
 alias sudo='sudo '
 
-alias cat='ccat'
+# alias cat='ccat'
 
 alias ls='exa'
 

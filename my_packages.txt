@@ -44,3 +44,5 @@ zathura-pdf-mupdf
 zsh-autosuggestions
 zsh-fast-syntax-highlighting
 zsh-theme-powerlevel10k-git
+gcc-fortran
+python-wheel

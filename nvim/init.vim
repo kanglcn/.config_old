@@ -271,7 +271,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 
 " Code format
-Plug 'Chiel92/vim-autoformat'
+"Plug 'Chiel92/vim-autoformat'
 
 " Python
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
