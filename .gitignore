@@ -22,6 +22,7 @@
 !/zsh/
 !/rofi/
 !/update
+!/neofetch/
 # ranger
 !/ranger/
 /ranger/plugins/__pycache__/*
