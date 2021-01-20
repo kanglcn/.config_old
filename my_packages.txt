@@ -46,3 +46,15 @@ zsh-fast-syntax-highlighting
 zsh-theme-powerlevel10k-git
 gcc-fortran
 python-wheel
+cuda
+python-pytorch-opt-cuda
+opencv-samples
+opencl-icd-loader
+python-torchvision-cuda
+python-h5py
+postgresql
+bzr
+python-dulwich
+gimp
+inckscape
+python-pycuda

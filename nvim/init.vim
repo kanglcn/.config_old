@@ -149,7 +149,7 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 map <LEADER>sc :set spell!<CR>
 
 " Compile function
-noremap <F5> :call CompileRun()<CR>
+noremap <F2> :call CompileRun()<CR>
 func! CompileRun()
   exec "w"
   if &filetype == 'c'
@@ -217,6 +217,8 @@ Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'mg979/vim-xtabline'
 Plug 'RRethy/vim-illuminate'
 
+" debugger
+Plug 'puremourning/vimspector'
 " File navigation
 Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr'
@@ -288,6 +290,11 @@ call plug#end()
 " Dress
 "color deus
 colorscheme dracula
+
+" Debuggr
+" <TODO> <KangLiang> config vimspector
+" nmap <F2> <Plug>VimspectorContinue
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " coc.nvim
 let g:coc_global_extensions = [
