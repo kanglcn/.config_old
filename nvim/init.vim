@@ -32,6 +32,8 @@ filetype plugin indent on
 
 set termguicolors
 
+set colorcolumn=80
+
 " Enable using mouse
 set mouse=a
 

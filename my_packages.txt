@@ -58,3 +58,8 @@ python-dulwich
 gimp
 inckscape
 python-pycuda
+python-sphinx_rtd_theme
+python-recommonmark
+python-pylint
+cython
+docker
