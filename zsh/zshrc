@@ -42,9 +42,6 @@ source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=250'
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
-# trelis or cubit
-alias cubit='~/opt/Coreform-Cubit-2020.2/bin/coreform_cubit'
-
 ## better command
 alias rm='rmtrash'
 alias rmdir='rmdirtrash'

@@ -1,4 +1,4 @@
-export STAMPS="/home/kanglcn/software/StaMPS-4.1-beta-fixed"
+export STAMPS="~/opt/StaMPS-4.1-beta-fixed"
 # export SAR="/home/ahooper/software/ROI_PAC_3_0"
 # export GETORB_BIN="/home/ahooper/software/getorb/bin"
 # export SAR_ODR_DIR="/home/ahooper/software/SAR_FILES/ODR"

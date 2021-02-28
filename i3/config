@@ -48,7 +48,10 @@ exec --no-startup-id xrandr --output DP-1.1.8 --rotate left
 exec --no-startup-id picom -b -i 1.0 --menu-opacity 1.0 --frame-opacity 1.0
 
 # Set background
-exec --no-startup-id ~/linux_scripts/wallpaper.sh
+exec --no-startup-id ~/bin/wallpaper.sh
+
+# Run auto_wlt.sh
+exec --no-startup-id ~/bin/auto_wlt.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status

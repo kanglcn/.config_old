@@ -30,7 +30,12 @@ export LIBRARY_PATH=${LIBRARY_PATH}:~/.local/altar/lib
 export C_INCLUDE_PATH=${C_INCLUDE_PATH}:~/.local/altar/include
 export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}:~/.local/altar/include
 export PATH=${PATH}:~/.local/altar/bin
+
 # StaMPS
 source ~/.config/zsh/StaMPS_CONFIG.bash
+
+# trelis or cubit
+export PATH=${PATH}:~/opt/Coreform-Cubit-2020.2/bin
+alias cubit='cd ~/opt/Coreform-Cubit-2020.2/bin/; ./coreform_cubit; cd -'
 
 # systemctl start runsunloginclient
