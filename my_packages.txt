@@ -1,7 +1,6 @@
 atool
 autopep8
 ccat
-ccat
 exa
 expect
 fcitx-configtool

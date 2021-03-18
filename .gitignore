@@ -23,6 +23,7 @@
 !/rofi/
 !/update
 !/neofetch/
+!/my_packages_aur.txt
 # ranger
 !/ranger/
 /ranger/plugins/__pycache__/*
