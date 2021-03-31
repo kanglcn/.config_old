@@ -62,3 +62,4 @@ python-recommonmark
 python-pylint
 cython
 docker
+lallal
