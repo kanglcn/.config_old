@@ -62,4 +62,4 @@ python-recommonmark
 python-pylint
 cython
 docker
-lallal
+python-obspy
