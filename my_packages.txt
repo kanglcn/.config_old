@@ -43,6 +43,7 @@ zathura-pdf-mupdf
 zsh-autosuggestions
 zsh-fast-syntax-highlighting
 zsh-theme-powerlevel10k-git
+zsh-completions
 gcc-fortran
 python-wheel
 cuda
@@ -63,3 +64,4 @@ python-pylint
 cython
 docker
 python-obspy
+pandoc
